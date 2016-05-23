@@ -29,13 +29,16 @@ void* HandleConnection(void*)
 }
 */
 int main(int argc, char**argv) {
-    printf("%s\n", "Starting server");
     
     string path = string(argv[1]);
+    
+    printf("%s at: %s\n", "Starting server", path.c_str());
+    
+    
+    
     //"/home/test/Documents/DevKit"
     
-    printf("%i", getpid());
-    
+        
     Server server(SOCKET_NAME, path.c_str());
     
     
