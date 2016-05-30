@@ -9,7 +9,7 @@
 typedef unsigned char byte;
 
 //#define BUFFER_SIZE 4096
-#define SOCKET_NAME "/tmp/dotnetsocket"
+//#define SOCKET_NAME "/tmp/dotnetsocket"
 
 using namespace std;
 
@@ -30,17 +30,31 @@ void* HandleConnection(void*)
 */
 int main(int argc, char**argv) {
     
+    if(argc < 3)
+    {
+        printf("%s\n", "Specify the lib folder path and the socket name");    
+        exit(-1);
+    }
+    
     string path = string(argv[1]);
     
-    printf("%s at: %s\n", "Starting server", path.c_str());
+    if(path.length() == 0)
+    {
+        printf("%s\n", "Specify the lib folder path");    
+        exit(-1);
+    }
     
+    string socketName = string(argv[2]);
     
+    if(socketName.length() == 0)
+    {
+        printf("%s\n", "Specify the socket name");    
+        exit(-1);
+    }
     
-    //"/home/test/Documents/DevKit"
-    
-        
-    Server server(SOCKET_NAME, path.c_str());
-    
+    //printf("%s at %s: %s\n", "Starting server", socketName.c_str(), path.c_str());
+
+    Server server(socketName.c_str(), path.c_str());
     
     server.Start();
     isConnected = true;

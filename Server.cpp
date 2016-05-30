@@ -167,6 +167,9 @@ void Server::HandleRequest(int data_socket)
 void Server::Start()
 {
     started = true;
+    
+    cout << "Server started" << endl;
+    
     int ret;
    
     /* Create local socket. */
