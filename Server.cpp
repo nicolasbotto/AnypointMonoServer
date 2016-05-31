@@ -166,10 +166,6 @@ void Server::HandleRequest(int data_socket)
 
 void Server::Start()
 {
-    started = true;
-    
-    cout << "Server started" << endl;
-    
     int ret;
    
     /* Create local socket. */
@@ -214,6 +210,10 @@ void Server::Start()
     if (ret == -1) {
         perror("Error start listening.");
     }
+    
+    started = true;
+    
+    cout << "Server started" << endl;
 
     /* This is the main loop for handling connections. */
     while(started)
